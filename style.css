@@ -1,0 +1,24 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+body{background:#0b0b0b;color:#fff}
+.container{max-width:1200px;margin:auto;padding:0 24px}
+.header{border-bottom:1px solid rgba(255,255,255,.06)}
+.header-inner{height:80px;display:flex;align-items:center;justify-content:space-between}
+.site-logo{height:38px}
+.nav a{margin-left:32px;color:#cfcfcf;text-decoration:none;font-size:14px}
+.hero{padding:180px 0}
+.hero h1{font-size:56px;font-weight:500}
+.hero p{max-width:520px;margin-top:24px;color:#9a9a9a}
+.cta-link{display:inline-block;margin-top:40px;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);text-decoration:none}
+.partners{padding:100px 0;background:#0f0f0f}
+.section-label{font-size:12px;letter-spacing:2px;color:#777;margin-bottom:32px}
+.partner-mask{overflow:hidden}
+.partner-track{display:flex;gap:90px;animation:scroll 60s linear infinite}
+.partner-track span{color:#6f6f6f;white-space:nowrap}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.faq{padding:120px 0}
+.faq summary{cursor:pointer;font-size:16px}
+.faq p{margin-top:16px;color:#9a9a9a}
+.contact{padding:160px 0;text-align:center}
+.contact-links{margin-top:40px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+.contact-links a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+.footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;text-align:center;color:#777}
