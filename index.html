@@ -1,73 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Planet Music Limited</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Planet Music Limited – Submit Music</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* RESET */
+    * { box-sizing: border-box; margin:0; padding:0; font-family:'Poppins', sans-serif; }
+
+    body { background:#f5f5f5; color:#222; line-height:1.6; }
+
+    .submit-music {
+      max-width:720px; margin:60px auto; padding:50px; background:#fff; border-radius:24px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .form-logo img { max-width:150px; margin-bottom:20px; transition: all 0.4s ease; }
+    .form-logo img:hover { transform: scale(1.05) rotate(-1deg); }
+
+    h2 { color:#e10600; font-size:36px; text-align:center; margin-bottom:15px; }
+    p { text-align:center; color:#555; margin-bottom:30px; }
+
+    form { display:flex; flex-direction:column; gap:20px; }
+
+    input, textarea, input[type="file"] {
+      background:#fafafa; border-radius:12px; padding:14px 18px; border:1px solid #ccc;
+      font-size:15px; color:#222; transition:all 0.3s ease; box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    input:hover, textarea:hover, input[type="file"]:hover { border-color:#e10600; box-shadow:0 4px 12px rgba(225,6,0,0.1); }
+    input:focus, textarea:focus { border-color:#e10600; box-shadow:0 0 6px rgba(225,6,0,0.2); }
+    ::placeholder { color:#888; }
+
+    button {
+      background: linear-gradient(90deg,#e10600,#ff3c3c);
+      border:none; padding:16px; border-radius:16px; font-weight:bold; font-size:16px;
+      color:#fff; cursor:pointer; transition:all 0.3s ease; box-shadow:0 4px 12px rgba(225,6,0,0.2);
+    }
+    button:hover { transform:translateY(-2px) scale(1.02); box-shadow:0 8px 18px rgba(225,6,0,0.3); }
+
+    .confirm-rights, .confirm-terms {
+      display:flex; align-items:center; gap:10px; font-size:14px; color:#555;
+    }
+    .confirm-terms input[type="checkbox"], .confirm-rights input[type="checkbox"] { accent-color:#e10600; width:18px; height:18px; }
+
+    #artist-results { margin-top:5px; }
+    .artist-item { display:flex; align-items:center; gap:12px; padding:8px 12px; background:#f2f2f2; border-radius:12px; margin-bottom:8px; cursor:pointer; }
+    .artist-item:hover { transform:translateX(3px); background:#ffeaea; }
+    .artist-item img { width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 0 6px rgba(225,6,0,0.2); }
+
+    .submission-guidelines { margin-top:30px; text-align:left; }
+    .submission-guidelines h3 { color:#e10600; margin-bottom:10px; }
+    .submission-guidelines ul { list-style:inside disc; color:#555; }
+    .submission-guidelines ul li { margin-bottom:6px; }
+
+    .site-footer { text-align:center; margin-top:40px; padding:20px; color:#777; font-size:14px; letter-spacing:0.5px; }
+
+    .terms-link { text-decoration:underline; color:#e10600; }
+    .terms-link:hover { color:#ff3c3c; }
+
+    #form-message { margin-top:15px; color:#e10600; font-weight:bold; }
+    .artist-input-row { display:flex; gap:10px; margin-bottom:10px; }
+    .artist-input-row input { flex:1; }
+    .add-artist { width:45px; }
+  </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="container header-inner">
-    <img src="https://sf-static.upanhlaylink.com/img/image_20251019362716cd0aae45d8bc7cfa44bd3366f5.jpg" class="site-logo" />
-    <nav class="nav">
-      <a href="#">For Artists</a>
-      <a href="#">Partners</a>
-      <a href="#">FAQ</a>
-      <a href="#">Contact</a>
-    </nav>
-  </div>
-</header>
+<section class="submit-music">
 
-<section class="hero">
-  <div class="container hero-inner">
-    <h1>Global music distribution<br />without compromises.</h1>
-    <p>Planet Music Limited works with independent artists and labels to release music worldwide.</p>
-    <a href="#contact" class="cta-link">Submit your music →</a>
+  <div class="form-logo">
+    <img src="https://i.ibb.co/Fk7JZ6Kt/114539-removebg-preview.png" alt="Planet Music Limited">
   </div>
-</section>
 
-<section class="partners">
-  <div class="container">
-    <p class="section-label">Trusted by platforms</p>
-    <div class="partner-mask">
-      <div class="partner-track">
-        <span>Spotify</span><span>Apple Music</span><span>YouTube Music</span><span>TikTok</span><span>Instagram</span><span>Deezer</span>
-        <span>Spotify</span><span>Apple Music</span><span>YouTube Music</span><span>TikTok</span><span>Instagram</span><span>Deezer</span>
+  <h2>Submit Your Music</h2>
+  <p>Please provide complete and accurate information. Incomplete submissions may not be reviewed.</p>
+
+  <form id="submit-form" action="https://formspree.io/f/8a97638aa34241809a06bebada554b68" method="POST" enctype="multipart/form-data">
+    <div id="artist-list-container">
+      <div class="artist-input-row">
+        <input type="text" name="artist[]" class="artist-name" placeholder="Artist / Stage Name" required>
+        <button type="button" class="add-artist">+</button>
       </div>
     </div>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="text" name="track" placeholder="Track Title" required>
+    <input type="text" name="genre" placeholder="Primary Genre (Hip-Hop, R&B, Pop...)" required>
+    <input type="file" name="audio" accept=".mp3,.wav" required>
+    <input type="file" name="cover" accept="image/*" required>
+    <input type="text" name="copyright" placeholder="© Year Name (Composition)" required>
+    <textarea name="notes" rows="4" placeholder="Additional notes (featured artists, language, ISRC...)"></textarea>
+
+    <label class="confirm-rights">
+      <input type="checkbox" required> I confirm that I own or control 100% of the rights to this content
+    </label>
+
+    <label class="confirm-terms">
+      <input type="checkbox" required> I have read and agree to the <a href="Planet-Music-Limited-Music-Distribution-Agreement-3-2-1-1.pdf" target="_blank" class="terms-link">Terms & Conditions</a>
+    </label>
+
+    <button type="submit">Submit Music</button>
+  </form>
+
+  <div id="form-message"></div>
+
+  <div class="submission-guidelines">
+    <h3>Submission Guidelines</h3>
+    <ul>
+      <li>WAV 24bit / 44.1kHz preferred</li>
+      <li>Unreleased music only</li>
+      <li>No AI-generated or unauthorized content</li>
+      <li>All rights must be cleared</li>
+      <li>Incomplete submissions may not be reviewed</li>
+    </ul>
   </div>
+
 </section>
 
-<section class="faq">
-  <div class="container">
-    <h2>Frequently Asked Questions</h2>
-    <details>
-      <summary>How do I start releasing music?</summary>
-      <p>Contact Planet Music Limited at <strong>contact@planetmusic.asia</strong>. Our team will guide you through the next steps.</p>
-    </details>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="container contact-inner">
-    <h2>Get in touch</h2>
-    <p>For music submissions, partnerships or general inquiries,<br />please contact our team.</p>
-    <div class="contact-links">
-      <a href="mailto:contact@planetmusic.asia">Email</a>
-      <a href="https://www.facebook.com/share/1C2mhVdefg/" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/planetmusic_ltd" target="_blank">Instagram</a>
-      <a href="https://youtube.com/@cloudsmusictv" target="_blank">YouTube</a>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container footer-inner">
-    <p>© 2025 Planet Music Limited</p>
-  </div>
+<footer class="site-footer">
+  © 2025 Planet Music Limited. All rights reserved.
 </footer>
+
+<script>
+  const form = document.getElementById("submit-form");
+  const messageDiv = document.getElementById("form-message");
+  const artistContainer = document.getElementById("artist-list-container");
+
+  // Thêm nhiều artist
+  artistContainer.addEventListener("click", e => {
+    if(e.target.classList.contains("add-artist")){
+      const row = document.createElement("div");
+      row.className = "artist-input-row";
+      row.innerHTML = `<input type="text" name="artist[]" class="artist-name" placeholder="Artist / Stage Name" required>
+                       <button type="button" class="add-artist">+</button>`;
+      artistContainer.appendChild(row);
+    }
+  });
+
+  // Submit form qua Formspree
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    messageDiv.textContent = "Đang gửi nhạc… vui lòng chờ!";
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if(res.ok){
+        messageDiv.textContent = "Gửi nhạc thành công! Vui lòng chờ mail để ý. Sau 1 tuần không thấy, hãy kiểm tra spam hoặc liên hệ trực tiếp.";
+        form.reset();
+      } else {
+        messageDiv.textContent = "Có lỗi xảy ra, vui lòng thử lại.";
+      }
+    } catch(err){
+      console.error(err);
+      messageDiv.textContent = "Có lỗi xảy ra, vui lòng thử lại.";
+    }
+  });
+</script>
 
 </body>
 </html>
